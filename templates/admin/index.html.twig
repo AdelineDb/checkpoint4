@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% include '/inc/navbarAdmin.html.twig' %}
+
+    <h1>Bienvenue dans votre espace administrateur</h1>
+
+    <div><a class="lien" href="{{ path('admin_artist_index') }}"> Gérer les artistes </a></div>
+    <div><a class="lien" href="{{ path('admin_event_index') }}"> Gérer les évènements </a></div>
+    <div><a class="lien" href="{{ path('admin_program_index') }}"> Gérer la programmation </a></div>
+
+{% endblock %}

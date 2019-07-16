@@ -1,0 +1,19 @@
+@import "vars";
+@import "~boostrap";
+@import "global";
+
+/* assets/css/app.css */
+
+body {
+    background-color: $primary-color;
+}
+
+a {
+    color: $warm-color;
+    font-weight: bold;
+}
+
+btn {
+
+    background-color: $warm-color;
+}

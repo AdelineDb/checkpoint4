@@ -34,7 +34,7 @@ class Artist
     private $picture;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\program", inversedBy="artist_id")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Program", inversedBy="artist_id")
      */
     private $program_id;
 

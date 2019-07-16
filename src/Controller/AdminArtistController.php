@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/artist")
+ * @Route("/admin/artistes", name="admin_")
  */
 class AdminArtistController extends AbstractController
 {
@@ -20,7 +20,7 @@ class AdminArtistController extends AbstractController
      */
     public function index(ArtistRepository $artistRepository): Response
     {
-        return $this->render('artist/index.html.twig', [
+        return $this->render('admin/artist/index.html.twig', [
             'artists' => $artistRepository->findAll(),
         ]);
     }
@@ -39,10 +39,10 @@ class AdminArtistController extends AbstractController
             $entityManager->persist($artist);
             $entityManager->flush();
 
-            return $this->redirectToRoute('artist_index');
+            return $this->redirectToRoute('admin_artist_index');
         }
 
-        return $this->render('artist/new.html.twig', [
+        return $this->render('admin/artist/new.html.twig', [
             'artist' => $artist,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class AdminArtistController extends AbstractController
      */
     public function show(Artist $artist): Response
     {
-        return $this->render('artist/show.html.twig', [
+        return $this->render('admin/artist/show.html.twig', [
             'artist' => $artist,
         ]);
     }
@@ -69,10 +69,10 @@ class AdminArtistController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('artist_index');
+            return $this->redirectToRoute('admin_artist_index');
         }
 
-        return $this->render('artist/edit.html.twig', [
+        return $this->render('admin/artist/edit.html.twig', [
             'artist' => $artist,
             'form' => $form->createView(),
         ]);
@@ -83,12 +83,12 @@ class AdminArtistController extends AbstractController
      */
     public function delete(Request $request, Artist $artist): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$artist->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $artist->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($artist);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('artist_index');
+        return $this->redirectToRoute('admin_artist_index');
     }
 }

@@ -15,8 +15,11 @@ class ArtistType extends AbstractType
             ->add('name')
             ->add('biography')
             ->add('picture')
-            ->add('program_id')
-        ;
+            ->add('program_id',
+                null,
+                ['choice_label' => 'name',
+                    'multiple' => true,
+                    'expanded' => true,]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
