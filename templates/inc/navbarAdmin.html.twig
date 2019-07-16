@@ -1,14 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </div>
-    </div>
-</nav>
+<div class="col-3 alignBlockAdmin">
+
+    <ul class="nav flex-column navColor">
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ path('admin_index') }}"> <img
+                        src="{{ asset('/pictures/logoseul.png') }}" class="logo"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ path('admin_artist_index') }}">Gérer les artistes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_event_index') }}">Gérer les évènements</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('admin_program_index') }}">Gérer la programmation</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Retour au site</a>
+        </li>
+    </ul>
+
+</div>

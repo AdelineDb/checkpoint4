@@ -3,10 +3,17 @@
 {% block title %}Program{% endblock %}
 
 {% block body %}
-    <h1>Program</h1>
 
-    <table class="table">
-        <tbody>
+<div class="general row">
+
+    {% include '/inc/navbarAdmin.html.twig' %}
+
+    <div class="col">
+
+        <h1>Program</h1>
+
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ program.id }}</td>
@@ -23,12 +30,14 @@
                 <th>Picture</th>
                 <td>{{ program.picture }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a href="{{ path('program_index') }}">back to list</a>
+        <a href="{{ path('program_index') }}">back to list</a>
 
-    <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+        <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
 
-    {{ include('program/_delete_form.html.twig') }}
-{% endblock %}
+        {{ include('program/_delete_form.html.twig') }}
+
+    </div>
+    {% endblock %}

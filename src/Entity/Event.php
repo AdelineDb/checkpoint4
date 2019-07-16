@@ -27,9 +27,31 @@ class Event
     private $country;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
     private $eventdate;
+
+    /**
+     * @ORM\Column(type="time")
+     * @return int|null
+     */
+    private $eventTime;
+
+    /**
+     * @return mixed
+     */
+    public function getEventTime()
+    {
+        return $this->eventTime;
+    }
+
+    /**
+     * @param mixed $eventTime
+     */
+    public function setEventTime($eventTime): void
+    {
+        $this->eventTime = $eventTime;
+    }
 
     public function getId(): ?int
     {

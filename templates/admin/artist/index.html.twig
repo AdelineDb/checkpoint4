@@ -3,37 +3,38 @@
 {% block title %}Artist index{% endblock %}
 
 {% block body %}
-    <h1>Artist index</h1>
+    <div class="container">
+        <h1>Liste des artistes</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Biography</th>
-                <th>Picture</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Biographie</th>
+                <th>Photo</th>
+                <th></th>
             </tr>
-        </thead>
-        <tbody>
-        {% for artist in artists %}
-            <tr>
-                <td>{{ artist.id }}</td>
-                <td>{{ artist.name }}</td>
-                <td>{{ artist.biography }}</td>
-                <td>{{ artist.picture }}</td>
-                <td>
-                    <a href="{{ path('admin_artist_show', {'id': artist.id}) }}">show</a>
-                    <a href="{{ path('admin_artist_edit', {'id': artist.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for artist in artists %}
+                <tr>
+                    <td>{{ artist.name |capitalize}}</td>
+                    <td>{{ artist.biography }}</td>
+                    <td>{{ artist.picture }}</td>
+                    <td>
+                        <a href="{{ path('admin_artist_show', {'id': artist.id}) }}"><i class="far fa-eye"></i></a>
+                        <a href="{{ path('admin_artist_edit', {'id': artist.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Pas d'artistes enregistrés</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('admin_artist_new') }}">Create new</a>
+        <a href="{{ path('admin_artist_new') }}">Créer un nouvel artiste</a>
+        <a href="{{ path('admin_artist_index') }}">Retour à l'accueil</a>
+    </div>
 {% endblock %}

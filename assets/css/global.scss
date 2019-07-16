@@ -1,0 +1,44 @@
+html{
+  height: 100vh;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  width: 70%;
+  margin-bottom: 10%;
+  padding: 10%;
+}
+
+.btn-primary{
+  margin: 1%;
+}
+
+.danger{
+  margin-top: 3.5%;
+}
+
+.navColor {
+  background-color: #ff9f79;
+  height: 120%;
+}
+
+.headeradmin {
+  background-color: #ff9f79;
+}
+
+.alignBlockAdmin {
+  padding-right: -15px !important;
+}
+
+.elephant {
+  background-image: url('/pictures/ride.jpg');
+
+  .white {
+    color: $primary-color;
+    padding: 10%;
+  }
+}

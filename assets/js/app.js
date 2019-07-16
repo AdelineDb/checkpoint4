@@ -4,4 +4,4 @@ require('../css/app.scss');
 
 const $ = require('jquery');
 import 'popper.js'
-import 'boostrap';
+import 'bootstrap'

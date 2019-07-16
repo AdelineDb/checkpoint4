@@ -3,9 +3,15 @@
 {% block title %}New Event{% endblock %}
 
 {% block body %}
-    <h1>Create new Event</h1>
+    <div class="general row">
 
-    {{ include('event/_form.html.twig') }}
+        {% include '/inc/navbarAdmin.html.twig' %}
 
-    <a href="{{ path('event_index') }}">back to list</a>
+        <div class="col">
+            <h1>Créer un nouvel événement</h1>
+
+            {{ include('admin/event/_form.html.twig') }}
+
+        </div>
+    </div>
 {% endblock %}

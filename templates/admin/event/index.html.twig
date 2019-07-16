@@ -3,37 +3,48 @@
 {% block title %}Event index{% endblock %}
 
 {% block body %}
-    <h1>Event index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>Eventdate</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for event in events %}
-            <tr>
-                <td>{{ event.id }}</td>
-                <td>{{ event.city }}</td>
-                <td>{{ event.country }}</td>
-                <td>{{ event.eventdate ? event.eventdate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('admin_event_show', {'id': event.id}) }}">show</a>
-                    <a href="{{ path('admin_event_edit', {'id': event.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="general row">
 
-    <a href="{{ path('admin_event_new') }}">Create new</a>
+            {% include '/inc/navbarAdmin.html.twig' %}
+
+        <div class="col">
+            <h1>Liste des événements</h1>
+
+            <div> <a class="btn btn-primary" href="{{ path('admin_event_new') }}">Créer un nouvel événement</a> </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Lieu</th>
+                    <th>Pays</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.city |capitalize }}</td>
+                        <td>{{ event.country }}</td>
+                        <td>{{ event.eventdate ? event.eventdate|date('d-m-Y') : '' }}</td>
+                        <td>{{ event.eventTime ? event.eventTime|date('H:i') : '' }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{{ path('admin_event_show', {'id': event.id}) }}"><i
+                                        class="far fa-eye"></i></a>
+                            <a class="btn btn-primary" href="{{ path('admin_event_edit', {'id': event.id}) }}"><i
+                                        class="fas fa-pencil-alt"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Pas d'événements en cours</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
 {% endblock %}
