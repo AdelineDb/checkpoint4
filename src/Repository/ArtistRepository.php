@@ -21,7 +21,7 @@ class ArtistRepository extends ServiceEntityRepository
 
 
     // /**
-    //  * @return Artist[] Returns an array of Artist objects
+    //  * @return ArtistFixtures[] Returns an array of ArtistFixtures objects
     //  */
     /*
     public function findByExampleField($value)
@@ -38,7 +38,7 @@ class ArtistRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Artist
+    public function findOneBySomeField($value): ?ArtistFixtures
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

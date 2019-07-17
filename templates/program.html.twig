@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program index{% endblock %}
+
+{% block body %}
+
+    <div class="general row">
+
+        {% include '/inc/navbar.html.twig' %}
+
+        <div class="col">
+{% for program in programs %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{  asset(program.picture) }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ program.name }}</h5>
+                    <p class="card-text">{{ program.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+{% endblock %}

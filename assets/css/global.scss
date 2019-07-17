@@ -1,34 +1,41 @@
 html {
   min-heightnheight: 100%;
   width: 100%;
+  height: 100%;
 }
 
 body {
   min-height: 100%;
   margin: 0;
   padding: 0;
+  color: $secondary-color;
+}
+
+.background{
+  background-image: url("/pictures/circus.jpg");
+  width: 100%;
 }
 
 .logoAdmin {
-  width: 100%;
+  width: 70%;
   margin-bottom: 10%;
   padding: 10%;
 }
 
-.logoText{
+.logoText {
   width: 40%;
 }
 
-a.navbarLogo{
- width: 50px;
+a.nav-link.logo {
+  width: 500px;
 }
 
 .logo {
-  width: 35%;
+  width: 20%;
   padding: 2%;
 }
 
-.navbar-light, .bg-light{
+.navbar-light, .bg-light {
   background-color: $primary-color !important;
 }
 
@@ -62,6 +69,21 @@ h1 {
   font-size: 32px;
 }
 
+.white{
+  color: white;
+  padding: 5% 10% 5% 10%;
+}
+
+.btn-index{
+  background-color: $primary-color;
+  border: $primary-color 1px solid;
+  margin: 10px 0 100px 43% ;
+}
+
+.backgroundIndex{
+  background-image: url("/pictures/circus.jpg");
+}
+
 
 .artistBio {
   width: 500px;
@@ -91,4 +113,40 @@ h1 {
 
 .elephant {
   width: 250px;
+}
+
+.loginForm {
+  width: 50%;
+  margin: auto;
+}
+
+.title-login {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-authentification {
+  margin: 20px auto 0 43%;
+  align-self: center;
+}
+
+.email {
+  width: 80%;
+  margin: 0 auto 10px;
+}
+
+.passwordmail {
+  width: 80%;
+  margin: auto;
+}
+
+.indexImage{
+  width: 100%;
+}
+
+.ml3 {
+  font-weight: 900;
+  font-size: 3.5em;
 }

@@ -1,4 +1,4 @@
-<div class="col-3 alignBlockAdmin">
+<div class="col-3 alignBlockAdmin headeradmin">
 
     <ul class="nav flex-column navColor">
         <li class="nav-item">
@@ -15,7 +15,10 @@
             <a class="nav-link" href="{{ path('admin_program_index') }}">Gérer la programmation</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Retour au site</a>
+            <a class="nav-link" href="{{ path('index') }}">Retour au site</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
         </li>
     </ul>
 
