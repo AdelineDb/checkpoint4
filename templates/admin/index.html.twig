@@ -1,29 +1,30 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
 
-    <div class="general row headeradmin">
+    <div class="row headeradmin">
+
 
         {% include '/inc/navbarAdmin.html.twig' %}
 
-    </div>
+        <div class="col">
 
-    <div class=col-9">
+            <div>
+                <img src="{{ asset('/pictures/logotexte.png') }}" class="">
+            </div>
 
-        <div class="headeradmin">
-            <img src="{{ asset('/pictures/logotexte.png') }}" class="">
+            <div>
+                <h1 class="white">Bienvenue dans votre espace administrateur</h1>
+            </div>
+            
+            <div>
+                <img src="{{ asset('/pictures/elephant.jpg') }}" class="fotoAdmin elephant">
+                <img src="{{ asset('/pictures/aerial.jpg') }}" class="fotoAdmin elephant">
+                <img src="{{ asset('/pictures/clown.jpg') }}" class="fotoAdmin clown">
+            </div>
+
         </div>
-
-        <div class="elephant">
-            <h1 class="white">Bienvenue dans votre espace administrateur</h1>
-
-
-            <div><a class="lien" href="{{ path('admin_artist_index') }}"> Gérer les artistes </a></div>
-            <div><a class="lien" href="{{ path('admin_event_index') }}"> Gérer les évènements </a></div>
-            <div><a class="lien" href="{{ path('admin_program_index') }}"> Gérer la programmation </a></div>
-        </div>
-
-    </div>
 
 
     </div>

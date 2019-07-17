@@ -39,8 +39,11 @@ class AdminEventController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Le spectacle a bien été ajouté');
+
             return $this->redirectToRoute('admin_event_index');
         }
+
 
         return $this->render('admin/event/new.html.twig', [
             'event' => $event,
@@ -69,6 +72,8 @@ class AdminEventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Le spectacle a bien été modifié');
+
             return $this->redirectToRoute('admin_event_index');
         }
 
@@ -87,7 +92,10 @@ class AdminEventController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($event);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'Le spectacle a bien été supprimé');
         }
+
 
         return $this->redirectToRoute('admin_event_index');
     }

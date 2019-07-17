@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Type;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -92,35 +93,21 @@ class Program
     }
 
     /**
-     * @return Collection|type[]
+     * @return mixed
      */
-    public function getType(): Collection
+    public function getType()
     {
         return $this->type;
     }
 
-    public function addType(type $type): self
+    /**
+     * @param mixed $type
+     */
+    public function setType($type): void
     {
-        if (!$this->type->contains($type)) {
-            $this->type[] = $type;
-            $type->setPrograms($this);
-        }
-
-        return $this;
+        $this->type = $type;
     }
 
-    public function removeType(type $type): self
-    {
-        if ($this->type->contains($type)) {
-            $this->type->removeElement($type);
-            // set the owning side to null (unless already changed)
-            if ($type->getPrograms() === $this) {
-                $type->setPrograms(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|Artist[]

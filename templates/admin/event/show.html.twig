@@ -31,7 +31,8 @@
 
             <div class="row">
 
-                <a class="btn btn-primary" href="{{ path('admin_event_edit', {'id': event.id}) }}">Modifier</a>
+                <a class="btn btn-primary" href="{{ path('admin_event_edit', {'id': event.id}) }}"><i
+                            class="fas fa-pencil-alt"></i></a>
 
                 <a class="btn"> {{ include('admin/event/_delete_form.html.twig') }} </a>
 

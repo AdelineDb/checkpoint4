@@ -20,8 +20,28 @@ class AdminArtistController extends AbstractController
      */
     public function index(ArtistRepository $artistRepository): Response
     {
+        $bios = $artistRepository->findAll();
+
+        $resumeBios = [];
+
+        foreach ($bios as $bio){
+
+            $res = explode(' ', $bio->getBiography());
+
+            $res = array_slice($res, 0, 10);
+
+            $res = implode(' ', $res);
+
+            $res .= '...';
+
+           $resumeBios[$bio->getId()] = $res;
+        }
+
+
         return $this->render('admin/artist/index.html.twig', [
             'artists' => $artistRepository->findAll(),
+            'resumeBios' => $resumeBios,
+
         ]);
     }
 
@@ -38,6 +58,8 @@ class AdminArtistController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($artist);
             $entityManager->flush();
+
+            $this->addFlash('success', 'L\'artiste a bien été ajouté');
 
             return $this->redirectToRoute('admin_artist_index');
         }
@@ -69,6 +91,8 @@ class AdminArtistController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'L\'artiste a bien été modifié');
+
             return $this->redirectToRoute('admin_artist_index');
         }
 
@@ -87,7 +111,11 @@ class AdminArtistController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($artist);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'L\' artiste a bien été supprimé');
         }
+
+
 
         return $this->redirectToRoute('admin_artist_index');
     }

@@ -1,19 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Program{% endblock %}
+{% block title %}Modifier {{ program.name }}{% endblock %}
 
 {% block body %}
 
-<div class="general row">
+    <div class="general row">
 
-    {% include '/inc/navbarAdmin.html.twig' %}
+        {% include '/inc/navbarAdmin.html.twig' %}
 
-    <div class="col">
+        <div class="col">
 
-        <h1>Modifier le programme</h1>
+            <h1>Modifier le programme {{ program.name }}</h1>
 
-        {{ include('admin_program/_form.html.twig', {'button_label': 'Update'}) }}
+            <div class="container">
 
-        {{ include('admin_program/_delete_form.html.twig') }}
+                {{ include('admin/program/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+            </div>
+
+        </div>
+
     </div>
-    {% endblock %}
+
+{% endblock %}

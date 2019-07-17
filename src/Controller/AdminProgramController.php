@@ -20,8 +20,29 @@ class AdminProgramController extends AbstractController
      */
     public function index(ProgramRepository $programRepository): Response
     {
+
+        $programs = $programRepository->findAll();
+
+        $resumeBios = [];
+
+        foreach ($programs as $program) {
+
+            $res = explode(' ', $program->getDescription());
+
+            $res = array_slice($res, 0, 10);
+
+            $res = implode(' ', $res);
+
+            $res .= '...';
+
+            $resumePrograms[$program->getId()] = $res;
+        }
+
         return $this->render('admin/program/index.html.twig', [
             'programs' => $programRepository->findAll(),
+            'resumePrograms' => $resumePrograms,
+            'type' => $programRepository->findAllWithType(),
+
         ]);
     }
 
@@ -39,10 +60,12 @@ class AdminProgramController extends AbstractController
             $entityManager->persist($program);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Le numéro a bien été ajouté');
+
             return $this->redirectToRoute('admin_program_index');
         }
 
-        return $this->render('program/new.html.twig', [
+        return $this->render('admin/program/new.html.twig', [
             'program' => $program,
             'form' => $form->createView(),
         ]);
@@ -69,8 +92,11 @@ class AdminProgramController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('program_index');
+            $this->addFlash('success', 'Le numéro a bien été modifié');
+
+            return $this->redirectToRoute('admin_program_index');
         }
+
 
         return $this->render('admin/program/edit.html.twig', [
             'program' => $program,
@@ -83,10 +109,13 @@ class AdminProgramController extends AbstractController
      */
     public function delete(Request $request, Program $program): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $program->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
+
+            $this->addFlash('danger', 'Le numéro a bien été supprimé');
+
         }
 
         return $this->redirectToRoute('admin_program_index');

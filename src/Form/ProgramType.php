@@ -15,8 +15,13 @@ class ProgramType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('picture')
-            ->add('type')
-            ->add('artist_id')
+            ->add('type', null, ['choice_label' => 'name'])
+            ->add('artist_id',
+                null,
+                ['choice_label' => 'name',
+                    'label'=> 'Artistes',
+                    'multiple' => true,
+                    'expanded' => true,])
         ;
     }
 

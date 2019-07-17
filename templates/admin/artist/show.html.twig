@@ -1,34 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Artist{% endblock %}
+{% block title %}Artistes{% endblock %}
 
 {% block body %}
-    <h1>Artist</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ artist.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ artist.name }}</td>
-            </tr>
-            <tr>
-                <th>Biography</th>
-                <td>{{ artist.biography }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ artist.picture }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
 
-    <a href="{{ path('admin_artist_index') }}">back to list</a>
+        {% include '/inc/navbarAdmin.html.twig' %}
 
-    <a href="{{ path('admin_artist_edit', {'id': artist.id}) }}">edit</a>
+        <div class="col">
 
-    {{ include('admin/artist/_delete_form.html.twig') }}
+            <h1>{{ artist.name }}</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Biographie</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="artistBio">{{ artist.biography }}</td>
+                    <td><img src="{{ asset('pictures/' ~ artist.picture) }}" alt="photo" class="artistPicture"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <a class="btn btn-primary" href="{{ path('admin_artist_edit', {'id': artist.id}) }}"><i
+                            class="fas fa-pencil-alt"></i></a>
+
+                <a class="btn"> {{ include('admin/artist/_delete_form.html.twig') }} </a>
+
+                <a class="btn">{{ include('admin/program/_delete_form.html.twig') }}</a>
+
+            </div>
+        </div>
+
+    </div>
 {% endblock %}

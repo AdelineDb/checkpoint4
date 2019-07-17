@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Program;
+use App\Entity\Artist;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,9 +20,21 @@ class ProgramRepository extends ServiceEntityRepository
         parent::__construct($registry, Program::class);
     }
 
-    // /**
-    //  * @return Program[] Returns an array of Program objects
-    //  */
+    public function findAllWithType()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->innerJoin('p.type', 't')
+            ->addSelect('t')
+            ->getQuery();
+
+
+        return $qb->execute();
+
+    }
+
+// /**
+//  * @return Program[] Returns an array of Program objects
+//  */
     /*
     public function findByExampleField($value)
     {

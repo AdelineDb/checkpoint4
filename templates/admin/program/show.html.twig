@@ -4,40 +4,32 @@
 
 {% block body %}
 
-<div class="general row">
+    <div class="general row">
 
-    {% include '/inc/navbarAdmin.html.twig' %}
+        {% include '/inc/navbarAdmin.html.twig' %}
 
-    <div class="col">
+        <div class="col">
 
-        <h1>Program</h1>
+            <h1>Numéro {{ program.name }}</h1>
 
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ program.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ program.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ program.description }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ program.picture }}</td>
-            </tr>
-            </tbody>
-        </table>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ program.description }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td><img src="{{ asset('pictures/' ~ program.picture) }}" alt="photo" class="artistPicture"> </td>
+                </tr>
+                </tbody>
+            </table>
 
-        <a href="{{ path('program_index') }}">back to list</a>
+            <a class="btn btn-primary" href="{{ path('admin_program_edit', {'id': program.id}) }}"><i
+                        class="fas fa-pencil-alt"></i></a>
 
-        <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
-
-        {{ include('program/_delete_form.html.twig') }}
+            <a class="btn">{{ include('admin/program/_delete_form.html.twig') }}</a>
+        </div>
 
     </div>
-    {% endblock %}
+{% endblock %}

@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Program{% endblock %}
+{% block title %}Nouveau numéro{% endblock %}
 
 {% block body %}
-    <h1>Create new Program</h1>
 
-    {{ include('program/_form.html.twig') }}
+    <div class="general row">
 
-    <a href="{{ path('program_index') }}">back to list</a>
+        {% include '/inc/navbarAdmin.html.twig' %}
+
+        <div class="col">
+
+            <h1>Créer un nouveau numéro</h1>
+
+            {{ include('admin/program/_form.html.twig') }}
+
+        </div>
+
+    </div>
+
 {% endblock %}

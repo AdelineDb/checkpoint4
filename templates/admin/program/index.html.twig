@@ -19,7 +19,7 @@
                 <tr>
                     <th>Nom</th>
                     <th>Description</th>
-                    <th>Photo</th>
+                    <th>Type</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -27,13 +27,14 @@
                 {% for program in programs %}
                     <tr>
                         <td>{{ program.name }}</td>
-                        <td>{{ program.description }}</td>
-                        <td>{{ program.picture }}</td>
+                        <td>{{ resumePrograms[program.id] }}</td>
+                        <td>{{ program.type.name }}</td>
                         <td>
                             <a class="btn btn-primary" href="{{ path('admin_program_show', {'id': program.id}) }}"><i
                                         class="far fa-eye"></i></a>
                             <a class="btn btn-primary" href="{{ path('admin_program_edit', {'id': program.id}) }}"><i
                                         class="fas fa-pencil-alt"></i></a>
+                            <a class="btn">{{ include('admin/program/_delete_form.html.twig') }}</a>
                         </td>
                     </tr>
                 {% else %}
